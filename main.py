@@ -21,9 +21,37 @@ def pickDirectory(value):
                 return category
 
 
-download_folder = "/Users/remy/Downloads"
+# path = "/Users/remy/Downloads"
 
-all_files = os.scandir(download_folder)
+
+# print(os.path.exists(path))
+# try:
+#     all_files = os.scandir(path)
+
+# except FileNotFoundError:
+#     print("The specified path does not exist.")
+
+
+def getUserPathInput():
+
+    while True:
+        path = input("Enter the path to the directory you want to organize: ")
+        if os.path.exists(path):
+            print("The path you are trying to organize is: ", path)
+            return path
+        else:
+            print("The specified path does not exist.")
+
+    # path = input("Enter the path to the directory you want to organize: ")
+    # while not os.path.exists(path):
+    #     print("The specified path does not exist.")
+    #     path = input("Enter the path to the directory you want to organize: ")
+    # return path
+
+
+path = getUserPathInput()
+
+print(path)
 
 
 def organizeDirectory():
@@ -38,7 +66,7 @@ def organizeDirectory():
         if directory is None:
             continue
 
-        directory_path = Path(download_folder) / directory
+        directory_path = Path(path) / directory
         try:
             if not directory_path.is_dir():
                 os.mkdir(directory_path)
@@ -49,5 +77,3 @@ def organizeDirectory():
 
 
 organizeDirectory()
-
-# os.mkdir(f"{download_folder}/test")
