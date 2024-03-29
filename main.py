@@ -21,46 +21,35 @@ def pickDirectory(value):
                 return category
 
 
-# path = "/Users/remy/Downloads"
-
-
-# print(os.path.exists(path))
-# try:
-#     all_files = os.scandir(path)
-
-# except FileNotFoundError:
-#     print("The specified path does not exist.")
-
-
 def getUserPathInput():
 
     while True:
         path = input("Enter the path to the directory you want to organize: ")
+        if path.lower() == "q":
+            break
         if os.path.exists(path):
             print("The path you are trying to organize is: ", path)
             return path
         else:
-            print("The specified path does not exist.")
-
-    # path = input("Enter the path to the directory you want to organize: ")
-    # while not os.path.exists(path):
-    #     print("The specified path does not exist.")
-    #     path = input("Enter the path to the directory you want to organize: ")
-    # return path
+            print(
+                "The specified path does not exist. Please try again. or press 'q' to quit."
+            )
 
 
 path = getUserPathInput()
 
-print(path)
 
+def organizeDirectory(path):
+    if path is None:
+        return
 
-def organizeDirectory():
+    files = os.scandir(path)
 
     print("Organizing files...")
-    for item in all_files:
-        if item.is_dir():
+    for file in files:
+        if file.is_dir():
             continue
-        file_path = Path(item)
+        file_path = Path(file)
         file_Type = file_path.suffix.lower()
         directory = pickDirectory(file_Type)
         if directory is None:
@@ -76,4 +65,4 @@ def organizeDirectory():
     print("Files organized.")
 
 
-organizeDirectory()
+organizeDirectory(path)
