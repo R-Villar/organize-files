@@ -3,6 +3,9 @@ from pathlib import Path
 
 from subdirectory import SUBDIR
 
+# The pickDirectory function is used to determine the category of
+# a given file based on its suffix.
+
 
 def pickDirectory(value):
     """
@@ -22,7 +25,20 @@ def pickDirectory(value):
 
 
 def getUserPathInput():
+    """
+    Prompts the user to enter the path to the directory they want to organize.
 
+    Returns:
+        str: The path to the directory entered by the user.
+
+    Raises:
+        None
+
+    Example:
+        Enter the path to the directory you want to organize: /Users/user/Documents
+        The path you are trying to organize is: /Users/user/Documents
+        '/Users/user/Documents'
+    """
     while True:
         path = input("Enter the path to the directory you want to organize: ")
         if path.lower() == "q":
@@ -40,6 +56,20 @@ path = getUserPathInput()
 
 
 def organizeDirectory(path):
+    """
+    Organizes files in the specified directory by moving them into
+    appropriate subdirectories based on their file type.
+
+    Args:
+        path (str): The path of the directory to be organized.
+
+    Returns:
+        None
+
+    Raises:
+        None
+
+    """
     if path is None:
         return
 
