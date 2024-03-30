@@ -1,27 +1,7 @@
 import os
 from pathlib import Path
 
-from subdirectory import SUBDIR
-
-# The pickDirectory function is used to determine the category of
-# a given file based on its suffix.
-
-
-def pickDirectory(value):
-    """
-    Determines the category of a given file based on its suffix.
-
-    Args:
-        value (str): The suffix of the file.
-
-    Returns:
-        str: The category of the file.
-
-    """
-    for category, suffixes in SUBDIR.items():
-        for suffix in suffixes:
-            if suffix == value:
-                return category
+from pick_directory import pickDirectory
 
 
 def getUserPathInput():
