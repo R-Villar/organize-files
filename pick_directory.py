@@ -1,7 +1,7 @@
 from subdirectory import SUBDIR
 
 
-def pickDirectory(value):
+def pick_directory(value):
     """
     Determines the category of a given file based on its suffix.
 
